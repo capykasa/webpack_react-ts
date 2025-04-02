@@ -1,12 +1,21 @@
 import { createRoot } from 'react-dom/client'
-import { App } from './components/App'
+import { App } from './components/App/App'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const root = document.getElementById('root')
 
 if (!root) {
-  throw new Error('root not fount')
+    throw new Error('root not fount')
 }
 
 const container = createRoot(root)
 
-container.render(<App />)
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <App />,
+        children: [],
+    },
+])
+
+container.render(<RouterProvider router={router} />)
